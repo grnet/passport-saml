@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://example.serviceprovider.com">
   <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-    <KeyDescriptor>
+    <KeyDescriptor use="signing">
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>MIICpDCCAYwCCQDoWJkfQCcbhjANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDEwls
+b2NhbGhvc3QwHhcNMTQxMTA1MTIzMzUxWhcNMjQxMTAyMTIzMzUxWjAUMRIwEAYD
+VQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDE
+DqZ0Pn47LC6AEoZMhP51dFSaXt9/i9DKNLkE/5jHA+t0UEAAjvOGaM39iWLORwie
+5FIhPvfLB0a4BD362Cw1oXAv94V9pSVrumfIzn03vc1mvUmRzqtNP2I3VkWS6UVP
+mFfIrQmQMAmhGZnGNEyP3qdd37mDCqaJRwckUNOunEQElyvprRKndwBIGh0lQags
+AJlAU8aqTXLlyOvuMtWyVP3xepyefwjPfdfiGBAuLPoBMyXSkn4/InhZRqgrqX3N
+JuYm0Zie8qYWHXhJp02hsO9u/Aw5sZu86WRTGGWNdW+u0gasiMn/eRTwvGQzjSK6
+hpFQvoekoS2Y1EFHhhdjAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAEsklbGYdwDs
+XXwlwu1YSUYNBUQSrM5KGslGqb1HkGyRA88KxuPN6HJdwUfky2VDdci614xFW6v6
+T74RKHMPYlFV6S/TwI5IuSrGpDvtvnuj5gBh9gS/L8cGIr+k2l0p/ZYC6cp0XNXA
+4ENFVXbcPI/a025oDHIuHvua8y0RbXmAVxo9x/HxoR5pcHPNsIT6+wee0lXITdTI
+qOn67x0E/sy2y2EeYdDlEi9DyW28ijb0QFcBvxrxmCeIuC4sgkJwikTkBZYLsIVB
+9uqnLiGCkV9hjw0PFNXYBH77REKORQNhH3Vut0I17oB5+7B4J+YgIs3966mpLSEd
+2nzrJf537hQ=
+</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <KeyDescriptor use="encryption">
       <ds:KeyInfo>
         <ds:X509Data>
           <ds:X509Certificate>MIIEsDCCApigAwIBAgIBADANBgkqhkiG9w0BAQUFADATMREwDwYDVQQDEwgxMC4w

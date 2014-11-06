@@ -39,5 +39,9 @@ nwtlCg==
     </KeyDescriptor>
     <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
     <AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://example.serviceprovider.com/saml/callback"/>
+    <AttributeConsumingService index="0" isDefault="true">
+      <ServiceName xml:lang="en">Passport-saml service</ServiceName>
+      <ServiceDescription xml:lang="en">This is a test passport-saml service</ServiceDescription>
+    </AttributeConsumingService>
   </SPSSODescriptor>
 </EntityDescriptor>

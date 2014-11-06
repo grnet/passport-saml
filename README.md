@@ -44,6 +44,7 @@ Config parameter details:
 * `entryPoint`: identity provider entrypoint
 * `issuer`: issuer string to supply to identity provider
 * `cert`: see 'security and signatures'
+* `publicCert`: optional - see 'security and signatures'
 * `privateCert`: see 'security and signatures'
 * `decryptionPvk`: optional private key that will be used to attempt to decrypt any encrypted assertions that are received
 * `identifierFormat`: if truthy, name identifier format to request from identity provider (default: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`)
@@ -52,6 +53,9 @@ Config parameter details:
 * `requestIdExpirationPeriodMs`: Defines the expiration time when a Request ID generated for a SAML request will not be valid if seen in a SAML response in the `InResponseTo` field.  Default is 8 hours.
 * `cacheProvider`: Defines the implementation for a cache provider used to store request Ids generated in SAML requests as part of `InResponseTo` validation.  Default is a built-in in-memory cache provider.  For details see the 'Cache Provider' section.
 * `attributeConsumingServiceIndex`: optional `AttributeConsumingServiceIndex` attribute to add to AuthnRequest to instruct the IDP which attribute set to attach to the response ([link](http://blog.aniljohn.com/2014/01/data-minimization-front-channel-saml-attribute-requests.html))
+* `requestedAttributes`: optional. See 'SAML Metadata'
+* `serviceName`: optional. See 'SAML Metadata'
+* `serviceDescription`: optional. See 'SAML Metadata'
 
 ### Provide the authentication callback
 
@@ -79,12 +83,46 @@ app.get('/login',
 );
 ```
 
-### generateServiceProviderMetadata( decryptionCert )
+## SAML Metadata
 
-As a convenience, the strategy object exposes a `generateServiceProviderMetadata` method which will generate a service provider metadata document suitable for supplying to an identity provider.  This method will only work on strategies which are configured with a `callbackUrl` (since the relative path for the callback is not sufficient information to generate a complete metadata document).
+As a convenience, the strategy object exposes a `generateServiceProviderMetadata(decryptionCert)` method which will generate a service provider metadata document suitable for supplying to an identity provider.  This method will only work on strategies which are configured with a `callbackUrl` (since the relative path for the callback is not sufficient information to generate a complete metadata document).
+
+### Certificates
 
 The `decryptionCert` argument should be a certificate matching the `decryptionPvk` and is required if the strategy is configured with a `decryptionPvk`.
 
+In order for the IdP to be able to verify the signed authentication request, it needs to have the public certificate that corresponds to the `privateCert`. If you want to publish this certificate in the SAML metadata, then you need to provide the certificate in PEM format via the `publicCert` configuration key. For example:
+
+```javascript
+    publicCert: fs.readFileSync('./cert.pem', 'utf-8')
+```
+
+If the `publicCert` configuration key is not defined and `decryptionCert` is defined, then the latter will be published in the SAML metadata as the preferred certificate both for signing and encryption.
+
+### Requested Attributes
+
+If you want to publish the attributes requested by your service, then you can set the `requestedAttributes` configuration key. The value of this key is a JSON array. For example:
+
+```javascript
+[
+  {
+    "FriendlyName": "eduPersonTargetedID",
+    "Name": "urn:oid:1.3.6.1.4.1.5923.1.1.1.10",
+    "NameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+    "isRequired": "true"
+  },
+  {
+    "FriendlyName": "displayName",
+    "Name": "urn:oid:2.16.840.1.113730.3.1.241",
+    "NameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+    "isRequired": "false"
+  }
+]
+```
+
+### Service provider name and description
+
+If you want to publish informational details about your service, you can set two optional configuration keys: `serviceName` and `serviceDescription`
 
 ## Security and signatures
 
@@ -96,7 +134,7 @@ Authentication requests sent by Passport-SAML can be signed using RSA-SHA1. To s
     privateCert: fs.readFileSync('./cert.pem', 'utf-8')
 ```
 
-It is a good idea to validate the incoming SAML Responses. For this, you can provide the Identity Provider's certificate using the `cert` confguration key:
+It is a good idea to validate the incoming SAML Responses. For this, you can provide the Identity Provider's certificate using the `cert` configuration key:
 
 ```javascript
     cert: 'MIICizCCAfQCCQCY8tKaMc0BMjANBgkqh ... W=='

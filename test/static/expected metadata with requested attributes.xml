@@ -39,5 +39,9 @@ nwtlCg==
     </KeyDescriptor>
     <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
     <AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://example.serviceprovider.com/saml/callback"/>
+    <AttributeConsumingService index="0" isDefault="true">
+      <RequestedAttribute FriendlyName="eduPersonTargetedID" Name="urn:oid:1.3.6.1.4.1.5923.1.1.1.10" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" isRequred="true"/>
+      <RequestedAttribute FriendlyName="displayName" Name="urn:oid:2.16.840.1.113730.3.1.241" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" isRequred="false"/>
+    </AttributeConsumingService>
   </SPSSODescriptor>
 </EntityDescriptor>

@@ -141,26 +141,26 @@ describe( 'passport-saml /', function() {
       { name: "Empty Config",
         config: {},
         result: {
-          'samlp:AuthnRequest': 
-           { '$': 
+          'samlp:AuthnRequest':
+           { '$':
               { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                 Version: '2.0',
                 ProtocolBinding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
                 AssertionConsumerServiceURL: 'http://localhost:3033/login',
                 Destination: 'https://wwwexampleIdp.com/saml' },
-             'saml:Issuer': 
+             'saml:Issuer':
               [ { _: 'onelogin_saml',
                   '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ],
-             'samlp:NameIDPolicy': 
-              [ { '$': 
+             'samlp:NameIDPolicy':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Format: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
                      AllowCreate: 'true' } } ],
-             'samlp:RequestedAuthnContext': 
-              [ { '$': 
+             'samlp:RequestedAuthnContext':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Comparison: 'exact' },
-                  'saml:AuthnContextClassRef': 
+                  'saml:AuthnContextClassRef':
                    [ { _: 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
                        '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ] } ] } }
       },
@@ -171,9 +171,9 @@ describe( 'passport-saml /', function() {
           passive: true,
           attributeConsumingServiceIndex: 123
         },
-        result: { 
-          'samlp:AuthnRequest': 
-           { '$': 
+        result: {
+          'samlp:AuthnRequest':
+           { '$':
               { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                 Version: '2.0',
                 ProtocolBinding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
@@ -181,19 +181,19 @@ describe( 'passport-saml /', function() {
                 AttributeConsumingServiceIndex: '123',
                 Destination: 'https://wwwexampleIdp.com/saml',
                 IsPassive: 'true' },
-             'saml:Issuer': 
+             'saml:Issuer':
               [ { _: 'http://exampleSp.com/saml',
                   '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ],
-             'samlp:NameIDPolicy': 
-              [ { '$': 
+             'samlp:NameIDPolicy':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Format: 'alternateIdentifier',
                      AllowCreate: 'true' } } ],
-             'samlp:RequestedAuthnContext': 
-              [ { '$': 
+             'samlp:RequestedAuthnContext':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Comparison: 'exact' },
-                  'saml:AuthnContextClassRef': 
+                  'saml:AuthnContextClassRef':
                    [ { _: 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
                        '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ] } ] } }
       },
@@ -205,9 +205,9 @@ describe( 'passport-saml /', function() {
           attributeConsumingServiceIndex: 123,
           skipRequestCompression: true
         },
-        result: { 
-          'samlp:AuthnRequest': 
-           { '$': 
+        result: {
+          'samlp:AuthnRequest':
+           { '$':
               { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                 Version: '2.0',
                 ProtocolBinding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
@@ -215,19 +215,19 @@ describe( 'passport-saml /', function() {
                 AttributeConsumingServiceIndex: '123',
                 Destination: 'https://wwwexampleIdp.com/saml',
                 IsPassive: 'true' },
-             'saml:Issuer': 
+             'saml:Issuer':
               [ { _: 'http://exampleSp.com/saml',
                   '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ],
-             'samlp:NameIDPolicy': 
-              [ { '$': 
+             'samlp:NameIDPolicy':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Format: 'alternateIdentifier',
                      AllowCreate: 'true' } } ],
-             'samlp:RequestedAuthnContext': 
-              [ { '$': 
+             'samlp:RequestedAuthnContext':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Comparison: 'exact' },
-                  'saml:AuthnContextClassRef': 
+                  'saml:AuthnContextClassRef':
                    [ { _: 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
                        '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ] } ] } }
       },
@@ -240,9 +240,9 @@ describe( 'passport-saml /', function() {
           skipRequestCompression: true,
           disableRequestedAuthnContext: true
         },
-        result: { 
-          'samlp:AuthnRequest': 
-           { '$': 
+        result: {
+          'samlp:AuthnRequest':
+           { '$':
               { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                 Version: '2.0',
                 ProtocolBinding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
@@ -250,11 +250,11 @@ describe( 'passport-saml /', function() {
                 AttributeConsumingServiceIndex: '123',
                 Destination: 'https://wwwexampleIdp.com/saml',
                 IsPassive: 'true' },
-             'saml:Issuer': 
+             'saml:Issuer':
               [ { _: 'http://exampleSp.com/saml',
                   '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ],
-             'samlp:NameIDPolicy': 
-              [ { '$': 
+             'samlp:NameIDPolicy':
+              [ { '$':
                    { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
                      Format: 'alternateIdentifier',
                      AllowCreate: 'true' } } ] } }
@@ -278,7 +278,7 @@ describe( 'passport-saml /', function() {
           })
         );
 
-        app.get( '/login', 
+        app.get( '/login',
           passport.authenticate( "saml", { samlFallback: 'login-request', session: false } ),
           function(req, res) {
             res.status(200).send("200 OK");
@@ -334,16 +334,16 @@ describe( 'passport-saml /', function() {
 
   describe( 'saml.js / ', function() {
     it( 'generateLogoutRequest', function( done ) {
-      var expectedRequest = { 
-        'samlp:LogoutRequest': 
-         { '$': 
+      var expectedRequest = {
+        'samlp:LogoutRequest':
+         { '$':
             { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
               'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion',
               //ID: '_85ba0a112df1ffb57805',
               Version: '2.0',
               //IssueInstant: '2014-05-29T03:32:23Z',
               Destination: 'foo' },
-           'saml:Issuer': 
+           'saml:Issuer':
             [ { _: 'onelogin_saml',
                 '$': { 'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion' } } ],
            'saml:NameID': [ { _: 'bar', '$': { Format: 'foo' } } ] } };
@@ -364,9 +364,9 @@ describe( 'passport-saml /', function() {
     });
 
     it( 'generateLogoutResponse', function( done ) {
-      var expectedResponse =  { 
-        'samlp:LogoutResponse': 
-         { '$': 
+      var expectedResponse =  {
+        'samlp:LogoutResponse':
+         { '$':
             { 'xmlns:samlp': 'urn:oasis:names:tc:SAML:2.0:protocol',
               'xmlns:saml': 'urn:oasis:names:tc:SAML:2.0:assertion',
               //ID: '_d11b3c5e085b2417f4aa',
@@ -404,6 +404,78 @@ describe( 'passport-saml /', function() {
       // verify that we are exposed through Strategy as well
       var strategy = new SamlStrategy( samlConfig, function() {} );
       metadata = strategy.generateServiceProviderMetadata( decryptionCert );
+      metadata.split( '\n' ).should.eql( expectedMetadata.split( '\n' ) );
+      done();
+    });
+
+    it('generateServiceProviderMetadata (with different keys for signing and encryption)', function(done) {
+      var samlConfig = {
+        issuer: 'http://example.serviceprovider.com',
+        callbackUrl: 'http://example.serviceprovider.com/saml/callback',
+        identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+        decryptionPvk: fs.readFileSync(__dirname + '/static/testshib encryption pvk.pem'),
+        decryptionCert: fs.readFileSync(__dirname + '/static/testshib encryption cert.pem', 'utf-8'),
+        publicCert: fs.readFileSync(__dirname + '/static/signing-cert.pem', 'utf-8'),
+        privateCert: fs.readFileSync(__dirname + '/static/signing-pvk.pem')
+      };
+
+      var samlObj = new SAML( samlConfig );
+      var decryptionCert = fs.readFileSync(__dirname + '/static/testshib encryption cert.pem', 'utf-8');
+      var metadata = samlObj.generateServiceProviderMetadata( decryptionCert );
+      var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata for separate keys.xml', 'utf-8');
+      // splits are to get a nice diff if they don't match for some reason
+      metadata.split( '\n' ).should.eql( expectedMetadata.split( '\n' ) );
+      done();
+    });
+
+    it('generateServiceProviderMetadata (with requested attributes)', function(done) {
+      var samlConfig = null;
+      samlConfig = {
+        issuer: 'http://example.serviceprovider.com',
+        callbackUrl: 'http://example.serviceprovider.com/saml/callback',
+        identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+        decryptionPvk: fs.readFileSync(__dirname + '/static/testshib encryption pvk.pem'),
+        requestedAttributes: [
+        {
+          "FriendlyName": "eduPersonTargetedID",
+          "Name": "urn:oid:1.3.6.1.4.1.5923.1.1.1.10",
+          "NameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+          "isRequired": "true"
+        },
+        {
+          "FriendlyName": "displayName",
+          "Name": "urn:oid:2.16.840.1.113730.3.1.241",
+          "NameFormat": "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+          "isRequired": "false"
+        },
+        ],
+      };
+
+      var samlObj = new SAML( samlConfig );
+      var decryptionCert = fs.readFileSync(__dirname + '/static/testshib encryption cert.pem', 'utf-8');
+      var metadata = samlObj.generateServiceProviderMetadata( decryptionCert );
+      var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with requested attributes.xml', 'utf-8');
+      // splits are to get a nice diff if they don't match for some reason
+      metadata.split( '\n' ).should.eql( expectedMetadata.split( '\n' ) );
+      done();
+    });
+
+    it('generateServiceProviderMetadata (with service name and service description)', function(done) {
+      var samlConfig = null;
+      samlConfig = {
+        issuer: 'http://example.serviceprovider.com',
+        callbackUrl: 'http://example.serviceprovider.com/saml/callback',
+        identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+        decryptionPvk: fs.readFileSync(__dirname + '/static/testshib encryption pvk.pem'),
+        serviceName: 'Passport-saml service',
+        serviceDescription: 'This is a test passport-saml service'
+      };
+
+      var samlObj = new SAML( samlConfig );
+      var decryptionCert = fs.readFileSync(__dirname + '/static/testshib encryption cert.pem', 'utf-8');
+      var metadata = samlObj.generateServiceProviderMetadata( decryptionCert );
+      var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with service name.xml', 'utf-8');
+      // splits are to get a nice diff if they don't match for some reason
       metadata.split( '\n' ).should.eql( expectedMetadata.split( '\n' ) );
       done();
     });
